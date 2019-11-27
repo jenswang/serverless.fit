@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Marked in the browser</title>
+</head>
+<body>
+  <div id="content"></div>
+  <script src="js/marked.min.js"></script>
+
+<script type="text/javascript">
+    function loadIndex(){
+       var xhr = new XMLHttpRequest();
+       xhr.open('get', 'README.md?'+(new Date()).getTime(), true);
+       xhr.onload = function(){
+           document.getElementById('content').innerHTML =
+           marked(this.responseText);
+       }
+       xhr.send();
+    }
+	window.onload = loadIndex();
+</script>
+</body>
+</html>
